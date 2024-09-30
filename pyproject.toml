@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "store"
+version = "0.0.1"
+requires-python = ">=3.11"
+readme = "README.md"
+license = {file = 'gpl-3.0.txt'}
+authors = [
+	{name = 'Luis Llana', email = 'llana@ucm.es'},
+	{name = 'Carmelo Cotón', email = 'ccoton@patata.es'},
+	{name = 'Chema Pamundi', email = 'cpamundi@patata.es'}
+]
+
+dependencies = [ "requests ~= 2.1",
+	"pandas ~= 2.1" ]
+
+
+[tool.setuptools.packages.find]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+store = ["data/*txt", "data/*csv",]
