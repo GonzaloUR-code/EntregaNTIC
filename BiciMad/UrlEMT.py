@@ -99,7 +99,7 @@ class UrlEMT:
             raise ValueError(f'No existen una url para los meses {month} y {year} en el web de la EMT')
 
 
-    def csv_from_zip(self, url: str) -> TextIO:
+    def csv_from_zip(url: str) -> TextIO:
         """
         Descarga un archivo ZIP desde la URL proporcionada, extrae un archivo CSV específico y devuelve su contenido como un objeto TextIO.
 
