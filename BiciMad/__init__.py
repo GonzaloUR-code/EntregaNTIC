@@ -1,3 +1,3 @@
 from .UrlEMT import UrlEMT
-
-__all__ = ["UrlEMT"]
+from .BiciMad import BiciMad
+__all__ = ["UrlEMT","BiciMad"]

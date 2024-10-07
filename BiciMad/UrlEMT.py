@@ -77,19 +77,22 @@ class UrlEMT:
        :return: La URL del archivo CSV.
        :raise: ValueError si el mes o año no son válidos, o si no se encuentra la URL.
        """
+        month_str = f"{month:02d}"
+        year_str = f"{year:02d}"
+
         #comprobamos que los arg de entrada son validos en formato
         patron_mes = r'^(0[1-9]|1[0-2])$'
         patron_year=r'^2[1-3]$'
 
         error=[]
-        if not re.findall(patron_mes, str(month)):
+        if not re.findall(patron_mes, month_str):
             error.append(f"El formato del parámetro de entrada {month} no es valido. El formato debe ser MM en formato integer.")
-        if not re.findall(patron_year, str(year)):
+        if not re.findall(patron_year, year_str):
             error.append(f"El formato del parámetro de entrada {year} no es valido. El formato debe ser YY con años entre 21 y 23.")
         if error:
             raise ValueError(" ".join(error))
 
-        patron="trips_"+str(year)+"_"+str(month)
+        patron="trips_"+year_str+"_"+month_str
         url_encontrado=[]
         for url in self.__enlaces_validos:
             if patron in url:
@@ -99,7 +102,7 @@ class UrlEMT:
             raise ValueError(f'No existen una url para los meses {month} y {year} en el web de la EMT')
 
 
-    def csv_from_zip(url: str) -> TextIO:
+    def csv_from_zip(self, url: str) -> TextIO:
         """
         Descarga un archivo ZIP desde la URL proporcionada, extrae un archivo CSV específico y devuelve su contenido como un objeto TextIO.
 
